@@ -9,7 +9,7 @@
         HorizontalLine slowLine = new HorizontalLine(20, 2.0); 
         
         HorizontalLine fastLine = new HorizontalLine(50, 2.5); 
-        
+        Buildings building = new Buildings(200,300);
         //since these are variables we don't want to ever change in the code, we capitalize them 
         var WINDOW_WIDTH = 1000;
         var WINDOW_HEIGHT = 600; 
@@ -31,7 +31,8 @@
           slowLine.moveLine(); 
         
           fastLine.moveLine();  
-        
+          building.drawBuilding();
+          building.updateBuilding();
         } 
         
          
@@ -78,11 +79,27 @@
           } 
         
         }
-        class backgroundBuildings{
-          var buildingWidth, buildingHeight, buildingLocationX, buildingLocationY;
+        class Buildings{
+          var  buildingLocationX, buildingLocationY, buildingWidth, buildingHeight;
 
-          backgroundBuildings(buildingWidth, buildingHeight){
+          Buildings(var bW ,var bH){
+            buildingLocationX =  1000;
+            buildingLocationY = 300;
+            buildingWidth = bW;
+            buildingHeight = bH;
+          }
+          void drawBuilding(){
+         //   rect(buildingLocationX, buildingLocationY, buildingWidth, buildingHeight);
+         
+            rect(buildingLocationX, buildingLocationY, buildingWidth, buildingHeight);
+            fill(0,0,0);
 
+          }
+          void updateBuilding(){
+            buildingLocationX = buildingLocationX - 10;
+            if(buildingLocationX < -200){
+              buildingLocationX = 1000;
+            }
           }
         }
         </script> 
