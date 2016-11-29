@@ -4,12 +4,12 @@
     <script src="http://cloud.github.com/downloads/processing-js/processing-js/processing-1.4.1.min.js"></script>
     <script type="text/processing" data-processing-target="mycanvas">
         //Your code goes here 
-         var moreBuildings = false;
+      //   var moreBuildings = false;
         // Declare and contruct two objects (h1, h2) from the class HorizontalLine 
         HorizontalLine slowLine = new HorizontalLine(20, 2.0); 
-      
+      Skyline skyline = new Skyline();
        // Skyline skylinetest = new Skyline();
-        Buildings building = new Buildings();
+       // Buildings building = new Buildings();
         HorizontalLine fastLine = new HorizontalLine(50, 2.5); 
      //   var addedBuildingWidths = 0;
        // while (addedBuildingWidths < 1000){
@@ -22,8 +22,8 @@
         var WINDOW_WIDTH = 1000;
         var WINDOW_HEIGHT = 600; 
         var GREY = 204;
-        ArrayList<Buildings> buildingList;
-        buildingList = new ArrayList<Buildings>(); 
+     //   ArrayList<Buildings> buildingList;
+        
         //This function only runs once at the start of the program
         void setup() {
           size(WINDOW_WIDTH, WINDOW_HEIGHT); //sets the size of the window
@@ -50,11 +50,11 @@
           slowLine.moveLine(); 
         
           fastLine.moveLine();  
-          building.drawBuilding();
-            building.updateBuilding();
-            if(moreBuildings == true){
-         drawSkyline();
-       }
+        //  building.drawBuilding();
+          //  building.updateBuilding();
+            
+         skyline.drawSkyline();
+       
         } 
         
          
@@ -124,34 +124,39 @@
           }
           void updateBuilding(){
             buildingLocationX = buildingLocationX - 10;
+
             //if(buildingLocationX < -200){
               //buildingLocationX = 1000;
             //}
            
-            if(buildingLocationX < 0){
-
-              buildingList.add(new Buildings());
-             moreBuildings = true;
-            }
+            
+           
+          
             
           }
         }
         class Skyline{
-         
+         ArrayList<Buildings> buildingList;
           Skyline(){
-          
-          buildingList;
+          //HERE
+          buildingList = new ArrayList<Buildings>(); 
+          createBuildings();
+
           }
              
          void drawSkyline(){
           //HERE
-       var i = 0;
+       for(var i = 0; i < buildingList.size(); i++) {
            Buildings currentBuilding = buildingList.get(i); 
             currentBuilding.drawBuilding();
             currentBuilding.updateBuilding();
-            i + 1;
-                
+            
+          }             
          }  
+         void createBuildings(){
+          buildingList.add(new Buildings()); 
+         }
+
         }
         </script> 
     </head>
