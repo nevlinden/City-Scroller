@@ -1,24 +1,43 @@
 <html>
-	<head>
-		<title>FishTank 2.0</title>
-		<script src="http://cloud.github.com/downloads/processing-js/processing-js/processing-1.4.1.min.js"></script>
-		<script type="text/processing" data-processing-target="mycanvas">
+  <head>
+    <title>City Scroller :3</title>
+    <script src="http://cloud.github.com/downloads/processing-js/processing-js/processing-1.4.1.min.js"></script>
+    <script type="text/processing" data-processing-target="mycanvas">
         //Your code goes here 
-        
+         var moreBuildings = false;
         // Declare and contruct two objects (h1, h2) from the class HorizontalLine 
         HorizontalLine slowLine = new HorizontalLine(20, 2.0); 
-        
+      
+       // Skyline skylinetest = new Skyline();
+        Buildings building = new Buildings();
         HorizontalLine fastLine = new HorizontalLine(50, 2.5); 
-        Buildings building = new Buildings(200,300);
+     //   var addedBuildingWidths = 0;
+       // while (addedBuildingWidths < 1000){
+         // buildingList.add(new Buildings());        
+           
+          
+                                                                              
+    //    }
         //since these are variables we don't want to ever change in the code, we capitalize them 
         var WINDOW_WIDTH = 1000;
         var WINDOW_HEIGHT = 600; 
         var GREY = 204;
+        ArrayList<Buildings> buildingList;
+        buildingList = new ArrayList<Buildings>(); 
         //This function only runs once at the start of the program
         void setup() {
           size(WINDOW_WIDTH, WINDOW_HEIGHT); //sets the size of the window
         
           frameRate(30); //how many times the draw function is called per second
+
+//while (totalWidth < 1000){
+         // var bWidth, bHeight;                                                                                                       
+           // bWidth = random(100,300);
+            //bHeight = random(150,500);           
+            //buildingList.add(new Buildings(bWidth, bHeight));
+            //totalWidth = totalWidth + bW;
+          //}
+            
         
         }
         
@@ -32,7 +51,10 @@
         
           fastLine.moveLine();  
           building.drawBuilding();
-          building.updateBuilding();
+            building.updateBuilding();
+           // if(moreBuildings = true){
+       //  drawSkyline();
+       //}
         } 
         
          
@@ -43,7 +65,7 @@
         //and functions which manipulate/give information about the attributes
         class HorizontalLine { 
         
-		  //attributes        
+      //attributes        
           var yPos, speed; //float means they can be decimals
         
           //constructor
@@ -57,15 +79,15 @@
           } 
           
           void moveLine() {
-          	update();
-          	drawLine();
+            update();
+            drawLine();
           }
           
           void update() { 
         
             yPos += speed; 
         
-        	//height is a pre-defined variable that is the pixel value for the bottom of the screen
+          //height is a pre-defined variable that is the pixel value for the bottom of the screen
             if (yPos > height) { 
               yPos = 0; 
             } 
@@ -75,38 +97,65 @@
           
           void drawLine() {
             //width is a pre-defined variable that is the pixel value for the right of the screen
-          	line(0, yPos, width, yPos); 
+            line(0, yPos, width, yPos); 
           } 
         
         }
-        class Buildings{
-          var  buildingLocationX, buildingLocationY, buildingWidth, buildingHeight;
 
-          Buildings(var bW ,var bH){
+        class Buildings{
+          var buildingLocationX, buildingLocationY, buildingWidth, buildingHeight;
+
+          Buildings(){
+             
             buildingLocationX =  1000;
             buildingLocationY = 300;
-            buildingWidth = bW;
-            buildingHeight = bH;
+            
+            buildingWidth = random(100,300);
+            buildingHeight = random(150,500);
+          //buildingHeight = 500;
+           
           }
           void drawBuilding(){
          //   rect(buildingLocationX, buildingLocationY, buildingWidth, buildingHeight);
-         
+         buildingLocationY = 600 - buildingHeight;
             rect(buildingLocationX, buildingLocationY, buildingWidth, buildingHeight);
             fill(0,0,0);
 
           }
           void updateBuilding(){
             buildingLocationX = buildingLocationX - 10;
-            if(buildingLocationX < -200){
-              buildingLocationX = 1000;
+            //if(buildingLocationX < -200){
+              //buildingLocationX = 1000;
+            //}
+           
+            if(buildingLocationX < 0){
+
+              buildingList.add(new Buildings());
+              moreBuildings = true;
             }
           }
+        }
+        class Skyline{
+         
+          Skyline(){
+          
+          buildingList;
+          }
+             
+         void drawSkyline(){
+          
+        i = 0;
+           Skyline currentBuilding = buildingList.get(i); 
+            currentBuilding.drawBuilding();
+            currentBuilding.updateBuilding();
+            i + 1;
+                
+         }  
         }
         </script> 
     </head>
     
     <body>
-		<canvas id="mycanvas"></canvas>
-	</body>
+    <canvas id="mycanvas"></canvas>
+  </body>
 </html>
-    
