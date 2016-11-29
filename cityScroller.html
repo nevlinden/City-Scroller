@@ -52,9 +52,9 @@
           fastLine.moveLine();  
           building.drawBuilding();
             building.updateBuilding();
-           // if(moreBuildings = true){
-       //  drawSkyline();
-       //}
+            if(moreBuildings == true){
+         drawSkyline();
+       }
         } 
         
          
@@ -131,8 +131,9 @@
             if(buildingLocationX < 0){
 
               buildingList.add(new Buildings());
-              moreBuildings = true;
+             moreBuildings = true;
             }
+            
           }
         }
         class Skyline{
@@ -143,9 +144,9 @@
           }
              
          void drawSkyline(){
-          
-        i = 0;
-           Skyline currentBuilding = buildingList.get(i); 
+          //HERE
+       var i = 0;
+           Buildings currentBuilding = buildingList.get(i); 
             currentBuilding.drawBuilding();
             currentBuilding.updateBuilding();
             i + 1;
