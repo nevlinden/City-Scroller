@@ -9,6 +9,7 @@
         HorizontalLine slowLine = new HorizontalLine(20, 2.0); 
       Skyline skyline = new Skyline();
       Skyline2 skyline2 = new Skyline2();
+      Skyline3 skyline3 = new Skyline3();
        // Skyline skylinetest = new Skyline();
        // Buildings building = new Buildings();
         HorizontalLine fastLine = new HorizontalLine(50, 2.5); 
@@ -48,12 +49,14 @@
         
           background(28, 17, 237); //needed in the draw function to "clear" the screen between updates
         
-          slowLine.moveLine(); 
+          //slowLine.moveLine(); 
         
-          fastLine.moveLine();  
+        //  fastLine.moveLine();  
         //  building.drawBuilding();
           //  building.updateBuilding();
      
+            skyline3.createBuildings3();
+            skyline3.drawSkyline3();
             skyline2.createBuildings2();
          skyline2.drawSkyline2();
 
@@ -141,6 +144,9 @@
           
           void updateBuilding2(){
             buildingLocationX = buildingLocationX - 5;
+          }
+          void updateBuilding3(){
+            buildingLocationX = buildingLocationX - 3;
           }
         }
         class Skyline{
@@ -234,13 +240,59 @@
          }  
         void createBuildings2(){
        // while(totalBuildingWwidth < 1000){
-         var randomBuildingWidth2 = random(150,150);
+         var randomBuildingWidth2 = random(50,150);
          var randomBuildingHeight2 = random(150, 400);
          totalBuildingWidth2 = totalBuildingWidth2 + randomBuildingWidth2;
          totalLocationX2 = totalLocationX2 + lokationX2;
          lokationX2 = 0;
           buildingList2.add(new Buildings(randomBuildingWidth2, randomBuildingHeight2, totalLocationX2)); 
           lokationX2 = lokationX2 + randomBuildingWidth2 - 10;
+     //    }
+     //extraBuilding = extraBuilding + randomBuildingWidth;
+}
+}
+class Skyline3{
+         ArrayList<Buildings> buildingList3;
+         var totalBuildingWidth3 = 0;
+         var extraBuilding3 = 0;
+         var totalLocationX3 = 1000;
+         var lokationX3 = 0;
+         var moreBuildings3 = true;
+        // var moarBuildings = true;
+          Skyline3(){
+          //HERE
+          buildingList3 = new ArrayList<Buildings>(); 
+   //      while(moreBuildings = true){ 
+          //  fillSkyline();
+
+   //     }
+
+          //while(totalBuildingWidth < 1000){
+          //createBuildings();
+
+        //}
+
+          }
+             
+         void drawSkyline3(){
+          //HERE
+       for(var i = 0; i < buildingList3.size(); i++) {
+           Buildings currentBuilding3 = buildingList3.get(i); 
+           fill(147, 146, 161);
+            currentBuilding3.drawBuilding();
+            currentBuilding3.updateBuilding3();
+            
+          }             
+         }  
+        void createBuildings3(){
+       // while(totalBuildingWwidth < 1000){
+         var randomBuildingWidth3 = random(150,150);
+         var randomBuildingHeight3 = random(150, 550);
+         totalBuildingWidth3 = totalBuildingWidth3 + randomBuildingWidth3;
+         totalLocationX3 = totalLocationX3 + lokationX3;
+         lokationX3 = 0;
+          buildingList3.add(new Buildings(randomBuildingWidth3, randomBuildingHeight3, totalLocationX3)); 
+          lokationX3 = lokationX3 + randomBuildingWidth3 - 10;
      //    }
      //extraBuilding = extraBuilding + randomBuildingWidth;
 }
