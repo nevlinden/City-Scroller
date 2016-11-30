@@ -8,6 +8,7 @@
         // Declare and contruct two objects (h1, h2) from the class HorizontalLine 
         HorizontalLine slowLine = new HorizontalLine(20, 2.0); 
       Skyline skyline = new Skyline();
+      Skyline2 skyline2 = new Skyline2();
        // Skyline skylinetest = new Skyline();
        // Buildings building = new Buildings();
         HorizontalLine fastLine = new HorizontalLine(50, 2.5); 
@@ -53,9 +54,14 @@
         //  building.drawBuilding();
           //  building.updateBuilding();
      
+            skyline2.createBuildings2();
+         skyline2.drawSkyline2();
+
             skyline.createBuildings();
           
          skyline.drawSkyline();
+
+
 
        
         } 
@@ -130,14 +136,11 @@
           void updateBuilding(){
             buildingLocationX = buildingLocationX - 10;
 
-            //if(buildingLocationX < -200){
-              //buildingLocationX = 1000;
-            //}
-           
             
-           
+          }
           
-            
+          void updateBuilding2(){
+            buildingLocationX = buildingLocationX - 5;
           }
         }
         class Skyline{
@@ -175,8 +178,8 @@
          }  
         void createBuildings(){
        // while(totalBuildingWwidth < 1000){
-         var randomBuildingWidth = random(100,200);
-         var randomBuildingHeight = random(70, 300);
+         var randomBuildingWidth = random(100,170);
+         var randomBuildingHeight = random(70, 200);
          totalBuildingWidth = totalBuildingWidth + randomBuildingWidth;
          totalLocationX = totalLocationX + lokationX;
          lokationX = 0;
@@ -223,8 +226,9 @@
           //HERE
        for(var i = 0; i < buildingList2.size(); i++) {
            Buildings currentBuilding2 = buildingList2.get(i); 
+           fill(36,36,38);
             currentBuilding2.drawBuilding();
-            currentBuilding2.updateBuilding();
+            currentBuilding2.updateBuilding2();
             
           }             
          }  
