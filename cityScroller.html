@@ -10,7 +10,7 @@
       Skyline skyline = new Skyline();
     Skyline2 skyline2 = new Skyline2();
      Skyline3 skyline3 = new Skyline3();
-     //Naruto Naruto = new Naruto(100,100);
+     Naruto Naruto = new Naruto(100,400);
        // Skyline skylinetest = new Skyline();
        // Buildings building = new Buildings();
         HorizontalLine fastLine = new HorizontalLine(50, 2.5); 
@@ -85,7 +85,7 @@
             skyline.createBuildings();
 
            }
-       // Naruto.drawNaruto();
+       Naruto.drawNaruto();
 
 
        
@@ -326,6 +326,7 @@ class Skyline3{
      //extraBuilding = extraBuilding + randomBuildingWidth;
 }
 }
+/* @pjs preload="NarutoRun1.png","NarutoRun2.png","NarutoRun3.png","NarutoRun4.png","NarutoRun5.png","NarutoRun6.png"; */
  class Naruto
         {
           //attributes
@@ -333,6 +334,7 @@ class Skyline3{
           PImage img;
           var running = true;
 
+          var imege = 0;
           //constructor
           Naruto(var mX, var mY){
             NarutoX = mX;
@@ -357,19 +359,45 @@ class Skyline3{
             }
             
           }
-
-          void drawNaruto(){ //normal running form
+ void drawNaruto(){ //normal running form
            // image(img, NarutoX, NarutoY,64,64);
-           var runImageArray["NarutoRun1.png", "NarutoRun2.png","NarutoRun3.png","NarutoRun4.png","NarutoRun5.png","NarutoRun6.png"];
-           while(running == true){
-           for (var i = 0; i < runImageArray.length; i++) {
-
-                  img = loadImage(runImageArray[i]);
-                 // img = loadImage("NarutoRun1.png");
-                    image(img, NarutoX, NarutoY, 64, 64);
+        //   var runImageArray["NarutoRun1.png", "NarutoRun2.png","NarutoRun3.png","NarutoRun4.png","NarutoRun5.png","NarutoRun6.png"];
+       //    while(running == true){
+       //  for (var i = 0; i < 5; i++) {
+          
+                  //img = loadImage(runImageArray[i];
+                //  img = loadImage("NarutoRun1.png");
+               if(imege == 0){
+                  img = loadImage("NarutoRun1.png");
+                  image(img, NarutoX, NarutoY, 64, 64);
+                }
+                else if(imege == 1){
+                  img = loadImage("NarutoRun2.png");
+                  image(img, NarutoX, NarutoY, 64, 64);
+                }
+                else if(imege == 2){
+                  img = loadImage("NarutoRun3.png");
+                  image(img, NarutoX, NarutoY, 64, 64);
+                }
+                else if(imege == 3){
+                  img = loadImage("NarutoRun4.png");
+                  image(img, NarutoX, NarutoY, 64, 64);
+                }
+                else if(imege == 4){
+                  img = loadImage("NarutoRun5.png");
+                  image(img, NarutoX, NarutoY, 64, 64);
+                }
+                else if(imege == 5){
+                  img = loadImage("NarutoRun6.png");
+                  image(img, NarutoX, NarutoY, 64, 64);
+                }
+                    imege = imege + 1;
+          if(imege == 5){
+            imege = 0;
           }
-        }
-      }
+    //    }
+   //   }
+    }
               void jump(){
             img = loadImage("Naruto_jump.png");
             NarutoY -= 5;
