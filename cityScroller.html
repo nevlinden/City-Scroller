@@ -52,8 +52,11 @@
           fastLine.moveLine();  
         //  building.drawBuilding();
           //  building.updateBuilding();
-            
+     
+            skyline.createBuildings();
+          
          skyline.drawSkyline();
+
        
         } 
         
@@ -143,14 +146,20 @@
          var extraBuilding = 0;
          var totalLocationX = 1000;
          var lokationX = 0;
+         var moreBuildings = true;
         // var moarBuildings = true;
           Skyline(){
           //HERE
           buildingList = new ArrayList<Buildings>(); 
-          while(totalBuildingWidth < 1000){
-          createBuildings();
+   //      while(moreBuildings = true){ 
+          //  fillSkyline();
 
-        }
+   //     }
+
+          //while(totalBuildingWidth < 1000){
+          //createBuildings();
+
+        //}
 
           }
              
@@ -163,18 +172,25 @@
             
           }             
          }  
-         void createBuildings(){
+        void createBuildings(){
        // while(totalBuildingWwidth < 1000){
-         var randomBuildingWidth = random(100,300);
-         var randomBuildingHeight = random(150,500);
+         var randomBuildingWidth = random(100,200);
+         var randomBuildingHeight = random(70, 300);
          totalBuildingWidth = totalBuildingWidth + randomBuildingWidth;
          totalLocationX = totalLocationX + lokationX;
          lokationX = 0;
           buildingList.add(new Buildings(randomBuildingWidth, randomBuildingHeight, totalLocationX)); 
-          lokationX = lokationX + randomBuildingWidth;
+          lokationX = lokationX + randomBuildingWidth - 10;
      //    }
      //extraBuilding = extraBuilding + randomBuildingWidth;
 }
+      void fillSkyline(){
+        while(moreBuildings == true){
+          createBuildings();
+          
+        }
+        
+      }
         }
         </script> 
     </head>
