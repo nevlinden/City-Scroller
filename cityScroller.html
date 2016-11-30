@@ -10,6 +10,7 @@
       Skyline skyline = new Skyline();
       Skyline2 skyline2 = new Skyline2();
       Skyline3 skyline3 = new Skyline3();
+      Naruto Naruto = new Naruto(100,100);
        // Skyline skylinetest = new Skyline();
        // Buildings building = new Buildings();
         HorizontalLine fastLine = new HorizontalLine(50, 2.5); 
@@ -63,7 +64,7 @@
             skyline.createBuildings();
           
          skyline.drawSkyline();
-
+        Naruto.drawNaruto();
 
 
        
@@ -156,6 +157,7 @@
          var totalLocationX = 1000;
          var lokationX = 0;
          var moreBuildings = true;
+         var positionX = 0;
         // var moarBuildings = true;
           Skyline(){
           //HERE
@@ -193,6 +195,7 @@
           buildingList.add(new Buildings(randomBuildingWidth, randomBuildingHeight, totalLocationX)); 
 
           lokationX = lokationX + randomBuildingWidth - 10;
+          
      //    }
      //extraBuilding = extraBuilding + randomBuildingWidth;
 }
@@ -297,6 +300,60 @@ class Skyline3{
      //extraBuilding = extraBuilding + randomBuildingWidth;
 }
 }
+ class Naruto
+        {
+          //attributes
+          var NarutoX, NarutoY, coins;
+          PImage img;
+
+          //constructor
+          Naruto(var mX, var mY){
+            NarutoX = mX;
+            NarutoY = mY;
+             img = loadImage("NarutoRun1.jpg");
+         //   img = loadImage("NarutoRun1.jpg", "NarutoRun2.jpg","NarutoRun3.jpg","NarutoRun4.jpg","NarutoRun5.jpg","NarutoRun6.jpg");
+           // var runImageArray["NarutoRun1.jpg", "NarutoRun2.jpg","NarutoRun3.jpg","NarutoRun4.jpg","NarutoRun5.jpg","NarutoRun6.jpg"];
+            coins = 0;
+          }
+
+          void updateAndDrawNaruto(){
+            update();
+            drawNaruto();
+          }
+
+          void update(){
+            if (keyPressed && keyCode == UP_ARROW) {
+              jump();
+            }
+            else {
+              fall();
+            }
+            
+          }
+
+          void drawNaruto(){ //normal running form
+           // image(img, NarutoX, NarutoY,64,64);
+          // for (var i = 0; i < runImageArray.size(); i++) {
+                  //  img = loadImage(runImageArray[1]);
+                 // img = loadImage("NarutoRun1.jpg");
+                    image(img, NarutoX, NarutoY, 64, 64);
+}
+              void jump(){
+            img = loadImage("Naruto_jump.jpg");
+            NarutoY -= 5;
+           }
+
+          void fall(){
+           if(NarutoY < height - 75){
+              NarutoY += 5;
+            }
+           else { //at bottom of screen 
+              img = loadImage("Naruto.jpg");
+            }
+          }
+}
+          
+          
         </script> 
     </head>
     
