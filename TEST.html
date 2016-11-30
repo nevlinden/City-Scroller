@@ -7,10 +7,10 @@
       //   var moreBuildings = false;
         // Declare and contruct two objects (h1, h2) from the class HorizontalLine 
         HorizontalLine slowLine = new HorizontalLine(20, 2.0); 
-      Skyline skyline = new Skyline();
-     // Skyline2 skyline2 = new Skyline2();
-   //   Skyline3 skyline3 = new Skyline3();
-   //   Naruto Naruto = new Naruto(100,100);
+     // Skyline skyline = new Skyline();
+   // Skyline2 skyline2 = new Skyline2();
+    // Skyline3 skyline3 = new Skyline3();
+    Naruto Naruto = new Naruto(100,100);
        // Skyline skylinetest = new Skyline();
        // Buildings building = new Buildings();
         HorizontalLine fastLine = new HorizontalLine(50, 2.5); 
@@ -50,27 +50,14 @@
         
           background(28, 17, 237); //needed in the draw function to "clear" the screen between updates
         
-          //slowLine.moveLine(); 
+          slowLine.moveLine(); 
         
-        //  fastLine.moveLine();  
+         fastLine.moveLine();  
         //  building.drawBuilding();
           //  building.updateBuilding();
-     
-       //     skyline3.createBuildings3();
-         //   skyline3.drawSkyline3();
-           // skyline2.createBuildings2();
-         //skyline2.drawSkyline2();
-         var positionX = 0;
-         if(positionX < 1000){
-            skyline.createBuildings();
-             skyline.drawSkyline();
-           }
-           else if(positionX > 1000){
-            lokationX = 0;
-            skyline.createBuildings();
+        
+        Naruto.drawNaruto();
 
-           }
-        //Naruto.drawNaruto();
 
 
        
@@ -121,205 +108,22 @@
         
         }
 
-        class Buildings{
-          var buildingLocationX, buildingLocationY, buildingWidth, buildingHeight;
-
-          Buildings(var bW, var bH, var lX){
-          buildingLocationX = lX;
-          //  buildingLocationX =  1000;
-            buildingLocationY = 300;
-            buildingWidth = bW;
-            buildingHeight = bH;
-        //    buildingWidth = random(100,300);
-          //  buildingHeight = random(150,500);
-          //buildingHeight = 500;
-           
-          }
-          void drawBuilding(){
-         //   rect(buildingLocationX, buildingLocationY, buildingWidth, buildingHeight);
-         buildingLocationY = 600 - buildingHeight;
-            rect(buildingLocationX, buildingLocationY, buildingWidth, buildingHeight);
-            stroke(GREY);
-            fill(0,0,0);
-
-          }
-          void updateBuilding(){
-            buildingLocationX = buildingLocationX - 10;
-
-            
-          }
-          
-          void updateBuilding2(){
-            buildingLocationX = buildingLocationX - 5;
-          }
-          void updateBuilding3(){
-            buildingLocationX = buildingLocationX - 3;
-          }
-        }
-        class Skyline{
-         ArrayList<Buildings> buildingList;
-         var totalBuildingWidth = 0;
-         var extraBuilding = 0;
-         var totalLocationX = 1000;
-         var lokationX = 0;
-         var moreBuildings = true;
-         var positionX = 0;
-        // var moarBuildings = true;
-          Skyline(){
-          //HERE
-          buildingList = new ArrayList<Buildings>(); 
-   //      while(moreBuildings = true){ 
-          //  fillSkyline();
-
-   //     }
-
-          //while(totalBuildingWidth < 1000){
-          //createBuildings();
-
-        //}
-
-          }
-             
-         void drawSkyline(){
-          //HERE
-       for(var i = 0; i < buildingList.size(); i++) {
-           Buildings currentBuilding = buildingList.get(i); 
-      //     fill(255,0,0);
-            currentBuilding.drawBuilding();
-            currentBuilding.updateBuilding();
-            
-          }             
-         }  
-        void createBuildings(){
-       // while(totalBuildingWwidth < 1000){
-         var randomBuildingWidth = random(100,170);
-         var randomBuildingHeight = random(70, 200);
-         totalBuildingWidth = totalBuildingWidth + randomBuildingWidth;
-         totalLocationX = totalLocationX + lokationX;
-         lokationX = 0;
-
-          buildingList.add(new Buildings(randomBuildingWidth, randomBuildingHeight, totalLocationX)); 
-
-          lokationX = lokationX + randomBuildingWidth- 10;
-          positionX = positionX + randomBuildingWidth;
-          
-     //    }
-     //extraBuilding = extraBuilding + randomBuildingWidth;
-}
-      void fillSkyline(){
-        while(moreBuildings == true){
-          createBuildings();
-          
-        }
         
-      }
-
-        }
-        class Skyline2{
-         ArrayList<Buildings> buildingList2;
-         var totalBuildingWidth2 = 0;
-         var extraBuilding2 = 0;
-         var totalLocationX2 = 1000;
-         var lokationX2 = 0;
-         var moreBuildings2 = true;
-        // var moarBuildings = true;
-          Skyline2(){
-          //HERE
-          buildingList2 = new ArrayList<Buildings>(); 
-   //      while(moreBuildings = true){ 
-          //  fillSkyline();
-
-   //     }
-
-          //while(totalBuildingWidth < 1000){
-          //createBuildings();
-
-        //}
-
-          }
-             
-         void drawSkyline2(){
-          //HERE
-       for(var i = 0; i < buildingList2.size(); i++) {
-           Buildings currentBuilding2 = buildingList2.get(i); 
-           fill(36,36,38);
-            currentBuilding2.drawBuilding();
-            currentBuilding2.updateBuilding2();
-            
-          }             
-         }  
-        void createBuildings2(){
-       // while(totalBuildingWwidth < 1000){
-         var randomBuildingWidth2 = random(50,150);
-         var randomBuildingHeight2 = random(150, 400);
-         totalBuildingWidth2 = totalBuildingWidth2 + randomBuildingWidth2;
-         totalLocationX2 = totalLocationX2 + lokationX2;
-         lokationX2 = 0;
-          buildingList2.add(new Buildings(randomBuildingWidth2, randomBuildingHeight2, totalLocationX2)); 
-          lokationX2 = lokationX2 + randomBuildingWidth2 - 10;
-     //    }
-     //extraBuilding = extraBuilding + randomBuildingWidth;
-}
-}
-class Skyline3{
-         ArrayList<Buildings> buildingList3;
-         var totalBuildingWidth3 = 0;
-         var extraBuilding3 = 0;
-         var totalLocationX3 = 1000;
-         var lokationX3 = 0;
-         var moreBuildings3 = true;
-        // var moarBuildings = true;
-          Skyline3(){
-          //HERE
-          buildingList3 = new ArrayList<Buildings>(); 
-   //      while(moreBuildings = true){ 
-          //  fillSkyline();
-
-   //     }
-
-          //while(totalBuildingWidth < 1000){
-          //createBuildings();
-
-        //}
-
-          }
-             
-         void drawSkyline3(){
-          //HERE
-       for(var i = 0; i < buildingList3.size(); i++) {
-           Buildings currentBuilding3 = buildingList3.get(i); 
-           fill(147, 146, 161);
-            currentBuilding3.drawBuilding();
-            currentBuilding3.updateBuilding3();
-            
-          }             
-         }  
-        void createBuildings3(){
-       // while(totalBuildingWwidth < 1000){
-         var randomBuildingWidth3 = random(150,150);
-         var randomBuildingHeight3 = random(150, 550);
-         totalBuildingWidth3 = totalBuildingWidth3 + randomBuildingWidth3;
-         totalLocationX3 = totalLocationX3 + lokationX3;
-         lokationX3 = 0;
-          buildingList3.add(new Buildings(randomBuildingWidth3, randomBuildingHeight3, totalLocationX3)); 
-          lokationX3 = lokationX3 + randomBuildingWidth3 - 10;
-     //    }
-     //extraBuilding = extraBuilding + randomBuildingWidth;
-}
-}
+/* @pjs preload="NarutoRun1.png","NarutoRun2.png","NarutoRun3.png","NarutoRun4.png","NarutoRun5.png","NarutoRun6.png"; */
  class Naruto
         {
           //attributes
           var NarutoX, NarutoY, coins;
           PImage img;
+          var running = true;
 
           //constructor
           Naruto(var mX, var mY){
             NarutoX = mX;
             NarutoY = mY;
-             img = loadImage("NarutoRun1.jpg");
-         //   img = loadImage("NarutoRun1.jpg", "NarutoRun2.jpg","NarutoRun3.jpg","NarutoRun4.jpg","NarutoRun5.jpg","NarutoRun6.jpg");
-           // var runImageArray["NarutoRun1.jpg", "NarutoRun2.jpg","NarutoRun3.jpg","NarutoRun4.jpg","NarutoRun5.jpg","NarutoRun6.jpg"];
+           //  img = loadImage("NarutoRun1.png");
+         // img = loadImage("NarutoRun1.png", "NarutoRun2.png","NarutoRun3.png","NarutoRun4.png","NarutoRun5.png","NarutoRun6.png");
+          
             coins = 0;
           }
 
@@ -340,13 +144,43 @@ class Skyline3{
 
           void drawNaruto(){ //normal running form
            // image(img, NarutoX, NarutoY,64,64);
-          // for (var i = 0; i < runImageArray.size(); i++) {
-                  //  img = loadImage(runImageArray[1]);
-                 // img = loadImage("NarutoRun1.jpg");
-                    image(img, NarutoX, NarutoY, 64, 64);
-}
+           var runImageArray["NarutoRun1.png", "NarutoRun2.png","NarutoRun3.png","NarutoRun4.png","NarutoRun5.png","NarutoRun6.png"];
+       //    while(running == true){
+       //  for (var i = 0; i < 5; i++) {
+          var i = 0;
+                  //img = loadImage(runImageArray[i];
+                //  img = loadImage("NarutoRun1.png");
+                if(i == 0){
+                  img = loadImage("NarutoRun1.png");
+                  image(img, NarutoX, NarutoY, 64, 64);
+                }
+                else if(i == 1){
+                  img = loadImage("NarutoRun2.png");
+                  image(img, NarutoX, NarutoY, 64, 64);
+                }
+                else if(i == 2){
+                  img = loadImage("NarutoRun3.png");
+                  image(img, NarutoX, NarutoY, 64, 64);
+                }
+                else if(i == 3){
+                  img = loadImage("NarutoRun4.png");
+                  image(img, NarutoX, NarutoY, 64, 64);
+                }
+                else if(i == 4){
+                  img = loadImage("NarutoRun5.png");
+                  image(img, NarutoX, NarutoY, 64, 64);
+                }
+                else if(i == 5){
+                  img = loadImage("NarutoRun6.png");
+                  image(img, NarutoX, NarutoY, 64, 64);
+                }
+                  i = i + 1;  
+          
+    //    }
+   //   }
+    }
               void jump(){
-            img = loadImage("Naruto_jump.jpg");
+            img = loadImage("Naruto_jump.png");
             NarutoY -= 5;
            }
 
@@ -355,7 +189,7 @@ class Skyline3{
               NarutoY += 5;
             }
            else { //at bottom of screen 
-              img = loadImage("Naruto.jpg");
+              img = loadImage("Naruto.png");
             }
           }
 }
