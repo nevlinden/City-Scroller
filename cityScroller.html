@@ -10,7 +10,9 @@
       Skyline skyline = new Skyline();
     Skyline2 skyline2 = new Skyline2();
      Skyline3 skyline3 = new Skyline3();
-     Naruto Naruto = new Naruto(100,400);
+     Naruto Naruto = new Naruto();
+   
+     
        // Skyline skylinetest = new Skyline();
        // Buildings building = new Buildings();
         HorizontalLine fastLine = new HorizontalLine(50, 2.5); 
@@ -40,7 +42,10 @@
             //buildingList.add(new Buildings(bWidth, bHeight));
             //totalWidth = totalWidth + bW;
           //}
-            
+
+         // Buildings myBuilding = new Buildings(100,200,450);
+        // println(myBuilding.getHeight());
+         //  println.(skyline.getBuildingHeight());
         
         }
         
@@ -79,12 +84,16 @@
          if(positionX < 1000){
             skyline.createBuildings();
              skyline.drawSkyline();
+             //println(skyline.getBuildingHeight());
+
            }
            else if(positionX > 1000){
             lokationX = 0;
             skyline.createBuildings();
 
            }
+          
+
        Naruto.drawNaruto();
 
 
@@ -156,11 +165,19 @@
             rect(buildingLocationX, buildingLocationY, buildingWidth, buildingHeight);
             stroke(GREY);
             fill(0,0,0);
+            getHeight();
 
           }
           void updateBuilding(){
             buildingLocationX = buildingLocationX - 10;
+            if(  buildingLocationX > 0 && buildingLocationX < 200){
+            println(getHeight());
+          
 
+            }
+            else if (buildingLocationX < 400){
+
+            }
             
           }
           
@@ -169,6 +186,11 @@
           }
           void updateBuilding3(){
             buildingLocationX = buildingLocationX - 3;
+          }
+
+          //Getter
+          int getHeight(){
+            return buildingHeight;
           }
         }
         class Skyline{
@@ -179,6 +201,7 @@
          var lokationX = 0;
          var moreBuildings = true;
          var positionX = 0;
+        
         // var moarBuildings = true;
           Skyline(){
           //HERE
@@ -202,6 +225,8 @@
       //     fill(255,0,0);
             currentBuilding.drawBuilding();
             currentBuilding.updateBuilding();
+         // println(currentBuilding.getHeight());
+          //  currentBuilding.getBuildingHeight();
             
           }             
          }  
@@ -214,20 +239,28 @@
          lokationX = 0;
 
           buildingList.add(new Buildings(randomBuildingWidth, randomBuildingHeight, totalLocationX)); 
-
+          
           lokationX = lokationX + randomBuildingWidth- 10;
           positionX = positionX + randomBuildingWidth;
-          
+          if(randomBuildingWidth == 100){
+            
+       //   NarutoY = randomBuildingHeight;
+}
+
+
      //    }
      //extraBuilding = extraBuilding + randomBuildingWidth;
 }
+
+
+
       void fillSkyline(){
         while(moreBuildings == true){
           createBuildings();
           
         }
         
-      }
+      } 
 
         }
         class Skyline2{
@@ -336,9 +369,9 @@ class Skyline3{
 
           var imege = 0;
           //constructor
-          Naruto(var mX, var mY){
-            NarutoX = mX;
-            NarutoY = mY;
+          Naruto(){
+            NarutoX = 100;
+            NarutoY = 400;
            //  img = loadImage("NarutoRun1.png");
          // img = loadImage("NarutoRun1.png", "NarutoRun2.png","NarutoRun3.png","NarutoRun4.png","NarutoRun5.png","NarutoRun6.png");
           
