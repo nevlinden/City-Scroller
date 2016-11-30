@@ -167,6 +167,7 @@
           //HERE
        for(var i = 0; i < buildingList.size(); i++) {
            Buildings currentBuilding = buildingList.get(i); 
+      //     fill(255,0,0);
             currentBuilding.drawBuilding();
             currentBuilding.updateBuilding();
             
@@ -179,7 +180,9 @@
          totalBuildingWidth = totalBuildingWidth + randomBuildingWidth;
          totalLocationX = totalLocationX + lokationX;
          lokationX = 0;
+
           buildingList.add(new Buildings(randomBuildingWidth, randomBuildingHeight, totalLocationX)); 
+
           lokationX = lokationX + randomBuildingWidth - 10;
      //    }
      //extraBuilding = extraBuilding + randomBuildingWidth;
@@ -191,7 +194,53 @@
         }
         
       }
+
         }
+        class Skyline2{
+         ArrayList<Buildings> buildingList2;
+         var totalBuildingWidth2 = 0;
+         var extraBuilding2 = 0;
+         var totalLocationX2 = 1000;
+         var lokationX2 = 0;
+         var moreBuildings2 = true;
+        // var moarBuildings = true;
+          Skyline2(){
+          //HERE
+          buildingList2 = new ArrayList<Buildings>(); 
+   //      while(moreBuildings = true){ 
+          //  fillSkyline();
+
+   //     }
+
+          //while(totalBuildingWidth < 1000){
+          //createBuildings();
+
+        //}
+
+          }
+             
+         void drawSkyline2(){
+          //HERE
+       for(var i = 0; i < buildingList2.size(); i++) {
+           Buildings currentBuilding2 = buildingList2.get(i); 
+            currentBuilding2.drawBuilding();
+            currentBuilding2.updateBuilding();
+            
+          }             
+         }  
+        void createBuildings2(){
+       // while(totalBuildingWwidth < 1000){
+         var randomBuildingWidth2 = random(150,150);
+         var randomBuildingHeight2 = random(150, 400);
+         totalBuildingWidth2 = totalBuildingWidth2 + randomBuildingWidth2;
+         totalLocationX2 = totalLocationX2 + lokationX2;
+         lokationX2 = 0;
+          buildingList2.add(new Buildings(randomBuildingWidth2, randomBuildingHeight2, totalLocationX2)); 
+          lokationX2 = lokationX2 + randomBuildingWidth2 - 10;
+     //    }
+     //extraBuilding = extraBuilding + randomBuildingWidth;
+}
+}
         </script> 
     </head>
     
