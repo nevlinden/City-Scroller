@@ -8,9 +8,9 @@
         // Declare and contruct two objects (h1, h2) from the class HorizontalLine 
         HorizontalLine slowLine = new HorizontalLine(20, 2.0); 
       Skyline skyline = new Skyline();
-      Skyline2 skyline2 = new Skyline2();
-      Skyline3 skyline3 = new Skyline3();
-      Naruto Naruto = new Naruto(100,100);
+    Skyline2 skyline2 = new Skyline2();
+     Skyline3 skyline3 = new Skyline3();
+     Naruto Naruto = new Naruto(100,100);
        // Skyline skylinetest = new Skyline();
        // Buildings building = new Buildings();
         HorizontalLine fastLine = new HorizontalLine(50, 2.5); 
@@ -51,19 +51,40 @@
           background(28, 17, 237); //needed in the draw function to "clear" the screen between updates
         
           //slowLine.moveLine(); 
-        
+        var positionX2 = 0;
+        var positionX3 = 0;
         //  fastLine.moveLine();  
         //  building.drawBuilding();
           //  building.updateBuilding();
-     
+          if(positionX3 < 1000){
+           skyline3.createBuildings3();
+           skyline3.drawSkyline3();
+          }
+          else if(positionX3 > 1000){
+            lokationX3 = 0;
             skyline3.createBuildings3();
-            skyline3.drawSkyline3();
+          }
+          if(positionX2 < 1000){
             skyline2.createBuildings2();
-         skyline2.drawSkyline2();
-
+            skyline2.drawSkyline2();
+          }
+          else if(positionX2 > 1000){
+            lokationX2 = 0;
+            skyline2.createBuildings3();
+          }
+         //   skyline3.drawSkyline3();
+           // skyline2.createBuildings2();
+         //skyline2.drawSkyline2();
+         var positionX = 0;
+         if(positionX < 1000){
             skyline.createBuildings();
-          
-         skyline.drawSkyline();
+             skyline.drawSkyline();
+           }
+           else if(positionX > 1000){
+            lokationX = 0;
+            skyline.createBuildings();
+
+           }
         Naruto.drawNaruto();
 
 
@@ -194,7 +215,8 @@
 
           buildingList.add(new Buildings(randomBuildingWidth, randomBuildingHeight, totalLocationX)); 
 
-          lokationX = lokationX + randomBuildingWidth - 10;
+          lokationX = lokationX + randomBuildingWidth- 10;
+          positionX = positionX + randomBuildingWidth;
           
      //    }
      //extraBuilding = extraBuilding + randomBuildingWidth;
@@ -215,6 +237,7 @@
          var totalLocationX2 = 1000;
          var lokationX2 = 0;
          var moreBuildings2 = true;
+         var positionX2 = 0;
         // var moarBuildings = true;
           Skyline2(){
           //HERE
@@ -250,6 +273,7 @@
          lokationX2 = 0;
           buildingList2.add(new Buildings(randomBuildingWidth2, randomBuildingHeight2, totalLocationX2)); 
           lokationX2 = lokationX2 + randomBuildingWidth2 - 10;
+          positionX2 = positionX2 + randomBuildingWidth2;
      //    }
      //extraBuilding = extraBuilding + randomBuildingWidth;
 }
@@ -261,6 +285,7 @@ class Skyline3{
          var totalLocationX3 = 1000;
          var lokationX3 = 0;
          var moreBuildings3 = true;
+         var positionX3 = 0;
         // var moarBuildings = true;
           Skyline3(){
           //HERE
@@ -296,6 +321,7 @@ class Skyline3{
          lokationX3 = 0;
           buildingList3.add(new Buildings(randomBuildingWidth3, randomBuildingHeight3, totalLocationX3)); 
           lokationX3 = lokationX3 + randomBuildingWidth3 - 10;
+          positionX3 = positionX3 + randomBuildingWidth3;
      //    }
      //extraBuilding = extraBuilding + randomBuildingWidth;
 }
