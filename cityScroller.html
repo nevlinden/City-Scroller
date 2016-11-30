@@ -10,7 +10,7 @@
       Skyline skyline = new Skyline();
     Skyline2 skyline2 = new Skyline2();
      Skyline3 skyline3 = new Skyline3();
-     Naruto Naruto = new Naruto(100,100);
+     //Naruto Naruto = new Naruto(100,100);
        // Skyline skylinetest = new Skyline();
        // Buildings building = new Buildings();
         HorizontalLine fastLine = new HorizontalLine(50, 2.5); 
@@ -85,7 +85,7 @@
             skyline.createBuildings();
 
            }
-        Naruto.drawNaruto();
+       // Naruto.drawNaruto();
 
 
        
@@ -331,14 +331,15 @@ class Skyline3{
           //attributes
           var NarutoX, NarutoY, coins;
           PImage img;
+          var running = true;
 
           //constructor
           Naruto(var mX, var mY){
             NarutoX = mX;
             NarutoY = mY;
-             img = loadImage("NarutoRun1.jpg");
-         //   img = loadImage("NarutoRun1.jpg", "NarutoRun2.jpg","NarutoRun3.jpg","NarutoRun4.jpg","NarutoRun5.jpg","NarutoRun6.jpg");
-           // var runImageArray["NarutoRun1.jpg", "NarutoRun2.jpg","NarutoRun3.jpg","NarutoRun4.jpg","NarutoRun5.jpg","NarutoRun6.jpg"];
+           //  img = loadImage("NarutoRun1.png");
+         // img = loadImage("NarutoRun1.png", "NarutoRun2.png","NarutoRun3.png","NarutoRun4.png","NarutoRun5.png","NarutoRun6.png");
+          
             coins = 0;
           }
 
@@ -359,13 +360,18 @@ class Skyline3{
 
           void drawNaruto(){ //normal running form
            // image(img, NarutoX, NarutoY,64,64);
-          // for (var i = 0; i < runImageArray.size(); i++) {
-                  //  img = loadImage(runImageArray[1]);
-                 // img = loadImage("NarutoRun1.jpg");
+           var runImageArray["NarutoRun1.png", "NarutoRun2.png","NarutoRun3.png","NarutoRun4.png","NarutoRun5.png","NarutoRun6.png"];
+           while(running == true){
+           for (var i = 0; i < runImageArray.length; i++) {
+
+                  img = loadImage(runImageArray[i]);
+                 // img = loadImage("NarutoRun1.png");
                     image(img, NarutoX, NarutoY, 64, 64);
-}
+          }
+        }
+      }
               void jump(){
-            img = loadImage("Naruto_jump.jpg");
+            img = loadImage("Naruto_jump.png");
             NarutoY -= 5;
            }
 
@@ -374,7 +380,7 @@ class Skyline3{
               NarutoY += 5;
             }
            else { //at bottom of screen 
-              img = loadImage("Naruto.jpg");
+              img = loadImage("Naruto.png");
             }
           }
 }
