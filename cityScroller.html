@@ -11,7 +11,7 @@
     Skyline2 skyline2 = new Skyline2();
      Skyline3 skyline3 = new Skyline3();
      Naruto Naruto = new Naruto();
-   
+   sunAndMoon sunAndMoon = new sunAndMoon();
      
        // Skyline skylinetest = new Skyline();
        // Buildings building = new Buildings();
@@ -53,8 +53,9 @@
         //called repeatedly
         void draw() { 
         
-          background(28, 17, 237); //needed in the draw function to "clear" the screen between updates
-        
+         background(1,4,69); //needed in the draw function to "clear" the screen between updates
+//background(255,255,255);
+        sunAndMoon.drawObject();
           //slowLine.moveLine(); 
         var positionX2 = 0;
         var positionX3 = 0;
@@ -163,6 +164,15 @@
          //   rect(buildingLocationX, buildingLocationY, buildingWidth, buildingHeight);
          buildingLocationY = 600 - buildingHeight;
             rect(buildingLocationX, buildingLocationY, buildingWidth, buildingHeight);
+            fill(200,200,255);
+            rect(buildingLocationX + buildingWidth/2 - 12, buildingLocationY + 20, 30, 30);
+            rect(buildingLocationX + buildingWidth/2 - 12, buildingLocationY + 80, 30, 30);
+            rect(buildingLocationX + buildingWidth/2 - 12, buildingLocationY + 140, 30, 30);
+            rect(buildingLocationX + buildingWidth/2 - 12, buildingLocationY + 200, 30, 30);
+            rect(buildingLocationX + buildingWidth/2 - 12, buildingLocationY + 260, 30, 30);
+
+
+
             stroke(GREY);
             fill(0,0,0);
             getHeight();
@@ -171,8 +181,9 @@
           void updateBuilding(){
             buildingLocationX = buildingLocationX - 10;
             if(  buildingLocationX > 0 && buildingLocationX < 200){
-            println(getHeight());
-          
+           // println(getHeight());
+           //FUNCTION FOR PRINTING Y VALUE HERE!!!!! ;DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+
 
             }
             else if (buildingLocationX < 400){
@@ -445,7 +456,19 @@ class Skyline3{
             }
           }
 }
-          
+         
+
+         class sunAndMoon{
+          var objectX, objectY;
+          sunAndMoon(var sX, var sY){
+            objectX = sX;
+            objectY = sY;
+
+          }
+          void drawObject(){
+            ellipse(150,100,100,100); 
+          }
+         } 
           
         </script> 
     </head>
