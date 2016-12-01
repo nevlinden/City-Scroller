@@ -12,6 +12,7 @@
      Skyline3 skyline3 = new Skyline3();
      Naruto Naruto = new Naruto();
    sunAndMoon sunAndMoon = new sunAndMoon(0,100);
+   var NarutoY = 400;
      
        // Skyline skylinetest = new Skyline();
        // Buildings building = new Buildings();
@@ -198,10 +199,12 @@
           }
           void updateBuilding(){
             buildingLocationX = buildingLocationX - 10;
-            if(  buildingLocationX > 0 && buildingLocationX < 200){
+            if(  buildingLocationX > 0 && buildingLocationX < 130){
            // println(getHeight());
            //FUNCTION FOR PRINTING Y VALUE HERE!!!!! ;DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
-
+           getHeight();
+           var narutoHeight = 600- buildingHeight;
+           NarutoY = narutoHeight - 60;
 
             }
             else if (buildingLocationX < 400){
@@ -392,7 +395,8 @@ class Skyline3{
  class Naruto
         {
           //attributes
-          var NarutoX, NarutoY, coins;
+          var NarutoX,  coins;
+       //   var NarutoY;
           PImage img;
           var running = true;
 
@@ -400,7 +404,7 @@ class Skyline3{
           //constructor
           Naruto(){
             NarutoX = 100;
-            NarutoY = 400;
+          //  NarutoY = 400;
            //  img = loadImage("NarutoRun1.png");
          // img = loadImage("NarutoRun1.png", "NarutoRun2.png","NarutoRun3.png","NarutoRun4.png","NarutoRun5.png","NarutoRun6.png");
           
