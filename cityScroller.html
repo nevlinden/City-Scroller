@@ -481,13 +481,29 @@ class Skyline3{
           var movingUp = true;
           var objectWidth = 20;
           var objectHeight = 20;
+          var objectColor = 140;
+          var changeColor = true;
           sunAndMoon(var sX, var sY){
             objectX = sX;
             objectY = sY;
 
           }
           void drawObject(){
-            fill(140,140,140);
+            if(changeColor == true){
+             // objectColor = 140;
+              objectColor = objectColor + 1.1;
+              if(objectColor > 250){
+                changeColor = false;
+              }
+            }
+            else if(changeColor == false){
+            //  objectColor = 255;
+              objectColor = objectColor - 1.1;
+              if(objectColor < 140){
+                changeColor = true;
+              }
+            }
+            fill(objectColor,140,140);
             ellipse(objectX,objectY,objectWidth,objectHeight); 
           }
           void updateObject(){
@@ -505,7 +521,7 @@ class Skyline3{
           }
 
             else if(movingUp == false){
-              if(objectY > 0)
+            //  if(objectY > 0)
               objectY = objectY + .5;
             objectWidth = objectWidth -1;
             objectHeight = objectHeight -1;
