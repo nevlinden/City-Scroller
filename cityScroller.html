@@ -11,7 +11,7 @@
     Skyline2 skyline2 = new Skyline2();
      Skyline3 skyline3 = new Skyline3();
      Naruto Naruto = new Naruto();
-   sunAndMoon sunAndMoon = new sunAndMoon();
+   sunAndMoon sunAndMoon = new sunAndMoon(0,100);
      
        // Skyline skylinetest = new Skyline();
        // Buildings building = new Buildings();
@@ -49,13 +49,31 @@
         
         }
         
-        
+        var colorChange = 0;
+        var isNight = false;
         //called repeatedly
         void draw() { 
         
-         background(1,4,69); //needed in the draw function to "clear" the screen between updates
+         background(colorChange,4,69); //needed in the draw function to "clear" the screen between updates
+         if(isNight == false){
+         if(colorChange > -1){
+         colorChange = colorChange + 2.34;
+         if(colorChange > 242){
+          isNight = true;
+         }
+       }
+     }
+     if(isNight == true){
+       if(colorChange < 266){
+        colorChange = colorChange -2.34;
+        if(colorChange < 2){
+          isNight = false;
+        }
+       }
+     }
 //background(255,255,255);
         sunAndMoon.drawObject();
+        sunAndMoon.updateObject();
           //slowLine.moveLine(); 
         var positionX2 = 0;
         var positionX3 = 0;
@@ -460,15 +478,47 @@ class Skyline3{
 
          class sunAndMoon{
           var objectX, objectY;
+          var movingUp = true;
+          var objectWidth = 20;
+          var objectHeight = 20;
           sunAndMoon(var sX, var sY){
             objectX = sX;
             objectY = sY;
 
           }
           void drawObject(){
-            fill(185, 186, 180);
-            ellipse(150,100,100,100); 
+            fill(140,140,140);
+            ellipse(objectX,objectY,objectWidth,objectHeight); 
           }
+          void updateObject(){
+            objectX = objectX + 5;
+          if(movingUp == true){
+            if(objectY < 151 ){
+              objectY = objectY -.5;
+              objectWidth = objectWidth + 1;
+              objectHeight = objectHeight + 1;
+              if(objectY < 50){
+                movingUp = false;
+              }
+          }
+            
+          }
+
+            else if(movingUp == false){
+              if(objectY > 0)
+              objectY = objectY + .5;
+            objectWidth = objectWidth -1;
+            objectHeight = objectHeight -1;
+            if(objectY > 149){
+              movingUp = true;
+            }
+
+            }
+            if(objectX == 1000){
+              objectX = 0;
+              movingUp = true;
+            }
+          } 
          } 
           
         </script> 
