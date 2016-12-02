@@ -13,6 +13,7 @@
      Naruto Naruto = new Naruto();
    sunAndMoon sunAndMoon = new sunAndMoon(0,100);
    var NarutoY = 400;
+  
      
        // Skyline skylinetest = new Skyline();
        // Buildings building = new Buildings();
@@ -33,7 +34,9 @@
         //This function only runs once at the start of the program
         void setup() {
           size(WINDOW_WIDTH, WINDOW_HEIGHT); //sets the size of the window
-        
+      //document.getElementById("NarutoOpening.mp3").play();
+      var song = new Audio('NarutoOpening.mp3');
+      song.play();
           frameRate(30); //how many times the draw function is called per second
 
 //while (totalWidth < 1000){
