@@ -54,7 +54,7 @@
         var isNight = false;
         //called repeatedly
         void draw() { 
-        
+        println(frameCount);
          background(colorChange,4,69); //needed in the draw function to "clear" the screen between updates
          if(isNight == false){
          if(colorChange > -1){
@@ -391,7 +391,7 @@ class Skyline3{
      //extraBuilding = extraBuilding + randomBuildingWidth;
 }
 }
-/* @pjs preload="NarutoRun1.png","NarutoRun2.png","NarutoRun3.png","NarutoRun4.png","NarutoRun5.png","NarutoRun6.png"; */
+/* @pjs preload="NarutoRun1.png","NarutoRun2.png","NarutoRun3.png","NarutoRun4.png","NarutoRun5.png","NarutoRun6.png", "NarutoSmoke.png"; */
  class Naruto
         {
           //attributes
@@ -399,8 +399,8 @@ class Skyline3{
        //   var NarutoY;
           PImage img;
           var running = true;
-
-          var imege = 0;
+          var narutoExistence = false;
+          var imege = -1;
           //constructor
           Naruto(){
             NarutoX = 100;
@@ -457,7 +457,25 @@ class Skyline3{
                   img = loadImage("NarutoRun6.png");
                   image(img, NarutoX, NarutoY, 64, 64);
                 }
+                 if(narutoExistence == false && imege == -1){
+                  if(frameCount > 0 ){
+                 noFill();
+                 if(frameCount > 80 ){
+
+                     img = loadImage("NarutoSmoke.png");
+                    image(img, NarutoX, NarutoY, 50, 50);
+                     if(frameCount > 90){
+                      narutoExistence = true;
+
+                    }
+                 }
+                  }
+                   
+                  }
+                if(narutoExistence == true){
                     imege = imege + 1;
+                  }
+
           if(imege == 5){
             imege = 0;
           }
