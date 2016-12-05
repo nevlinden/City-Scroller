@@ -11,6 +11,7 @@
     Skyline2 skyline2 = new Skyline2();
      Skyline3 skyline3 = new Skyline3();
      Naruto Naruto = new Naruto();
+   //  coinz coin = new coinz();
    sunAndMoon sunAndMoon = new sunAndMoon(0,100);
    var NarutoY = 400;
   
@@ -30,13 +31,14 @@
         var WINDOW_HEIGHT = 600; 
         var GREY = 204;
      //   ArrayList<Buildings> buildingList;
-        
+      //  ArrayList<coinz> coinList;
         //This function only runs once at the start of the program
         void setup() {
+         
           size(WINDOW_WIDTH, WINDOW_HEIGHT); //sets the size of the window
       //document.getElementById("NarutoOpening.mp3").play();
       var song = new Audio('NarutoOpening.mp3');
-      song.play();
+          song.play();
           frameRate(30); //how many times the draw function is called per second
 
 //while (totalWidth < 1000){
@@ -107,6 +109,7 @@
          if(positionX < 1000){
             skyline.createBuildings();
              skyline.drawSkyline();
+             skyline.drawCoinz();
              //println(skyline.getBuildingHeight());
 
            }
@@ -116,6 +119,8 @@
 
            }
           
+        //  coin.drawCoins();
+          //coin.updateCoins();
 
        Naruto.drawNaruto();
 
@@ -230,17 +235,21 @@
         }
         class Skyline{
          ArrayList<Buildings> buildingList;
+         ArrayList<coinz> coinList;
          var totalBuildingWidth = 0;
          var extraBuilding = 0;
          var totalLocationX = 1000;
          var lokationX = 0;
          var moreBuildings = true;
          var positionX = 0;
+         var totalCoinWidth, locationX;
+         var coinzzX = 0;
         
         // var moarBuildings = true;
           Skyline(){
           //HERE
           buildingList = new ArrayList<Buildings>(); 
+          coinList = new ArrayList<coinz>();
    //      while(moreBuildings = true){ 
           //  fillSkyline();
 
@@ -252,6 +261,7 @@
         //}
 
           }
+
              
          void drawSkyline(){
           //HERE
@@ -265,27 +275,36 @@
             
           }             
          }  
+         void drawCoinz(){
+          for(var i = 0; i < coinList.size(); i++){
+            coinz currentCoin = coinList.get(i);
+            currentCoin.drawCoins();
+            currentCoin.updateCoins();
+          }
+         }
         void createBuildings(){
        // while(totalBuildingWwidth < 1000){
          var randomBuildingWidth = random(100,170);
          var randomBuildingHeight = random(70, 200);
+         var coinzzY = random(100,400);
          totalBuildingWidth = totalBuildingWidth + randomBuildingWidth;
          totalLocationX = totalLocationX + lokationX;
+         coinzzX = coinzzX + lokationX
          lokationX = 0;
-
+         
+         coinList.add(new coinz(800, coinzzY));
+       
           buildingList.add(new Buildings(randomBuildingWidth, randomBuildingHeight, totalLocationX)); 
           
           lokationX = lokationX + randomBuildingWidth- 10;
           positionX = positionX + randomBuildingWidth;
-          if(randomBuildingWidth == 100){
-            
-       //   NarutoY = randomBuildingHeight;
-}
+         
 
 
      //    }
      //extraBuilding = extraBuilding + randomBuildingWidth;
 }
+
 
 
 
@@ -394,16 +413,20 @@ class Skyline3{
      //extraBuilding = extraBuilding + randomBuildingWidth;
 }
 }
-/* @pjs preload="NarutoRun1.png","NarutoRun2.png","NarutoRun3.png","NarutoRun4.png","NarutoRun5.png","NarutoRun6.png", "NarutoSmoke.png"; */
+/* @pjs preload="NarutoRun1.png","NarutoRun2.png","NarutoRun3.png","NarutoRun4.png","NarutoRun5.png","NarutoRun6.png", "NarutoSmoke.png", "scroll.png"; */
  class Naruto
         {
           //attributes
-          var NarutoX,  coins;
+          var NarutoX;
        //   var NarutoY;
           PImage img;
           var running = true;
           var narutoExistence = false;
           var imege = -1;
+  //        var moreCoins = true;
+//          var coinNumber = 0;
+
+      
           //constructor
           Naruto(){
             NarutoX = 100;
@@ -412,6 +435,8 @@ class Skyline3{
          // img = loadImage("NarutoRun1.png", "NarutoRun2.png","NarutoRun3.png","NarutoRun4.png","NarutoRun5.png","NarutoRun6.png");
           
             coins = 0;
+            coinsX = 1000;
+            coinsY = random(200,400);
           }
 
           void updateAndDrawNaruto(){
@@ -428,6 +453,7 @@ class Skyline3{
             }
             
           }
+
  void drawNaruto(){ //normal running form
            // image(img, NarutoX, NarutoY,64,64);
         //   var runImageArray["NarutoRun1.png", "NarutoRun2.png","NarutoRun3.png","NarutoRun4.png","NarutoRun5.png","NarutoRun6.png"];
@@ -469,7 +495,7 @@ class Skyline3{
                     image(img, NarutoX, NarutoY, 50, 50);
                      if(frameCount > 90){
                       narutoExistence = true;
-
+                      
                     }
                  }
                   }
@@ -499,7 +525,26 @@ class Skyline3{
             }
           }
 }
-         
+         class coinz{
+          var coinsX, coinsY, coins;
+          coinz(var coinX, var coinY){
+            coinsX = coinX;
+            coinsY = coinY;
+
+          }
+           void drawCoins(){
+            
+            img = loadImage("scroll.png");
+            image(img, coinsX, coinsY, 30,30);
+            //coinNumber += 1;
+            
+          
+          }
+          void updateCoins(){
+            coinsX -= 10;
+
+          }
+         }
 
          class sunAndMoon{
           var objectX, objectY;
