@@ -121,8 +121,9 @@
           
         //  coin.drawCoins();
           //coin.updateCoins();
-
+        Naruto.update();
        Naruto.drawNaruto();
+       
 
 
        
@@ -448,8 +449,10 @@ class Skyline3{
           }
 
           void update(){
-            if (keyPressed && keyCode == UP_ARROW) {
+            if (keyPressed && keyCode == 32) {
               jump();
+              println("same");
+
             }
             else {
               fall();
@@ -515,7 +518,7 @@ class Skyline3{
    //   }
     }
               void jump(){
-            img = loadImage("Naruto_jump.png");
+            img = loadImage("NarutoJump.png");
             NarutoY -= 5;
            }
 
@@ -524,7 +527,7 @@ class Skyline3{
               NarutoY += 5;
             }
            else { //at bottom of screen 
-              img = loadImage("Naruto.png");
+              //img = loadImage("Naruto.png");
             }
           }
 }
