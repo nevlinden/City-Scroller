@@ -244,7 +244,7 @@
          var positionX = 0;
          var totalCoinWidth, locationX;
          var coinzzX = 0;
-        
+         var frameThing = 0;
         // var moarBuildings = true;
           Skyline(){
           //HERE
@@ -283,23 +283,26 @@
           }
          }
         void createBuildings(){
+
        // while(totalBuildingWwidth < 1000){
          var randomBuildingWidth = random(100,170);
          var randomBuildingHeight = random(70, 200);
-         var coinzzY = random(100,400);
+         var coinzzY = random(200,400);
          totalBuildingWidth = totalBuildingWidth + randomBuildingWidth;
          totalLocationX = totalLocationX + lokationX;
          coinzzX = coinzzX + lokationX
          lokationX = 0;
-         
+         if (frameThing == 29){
          coinList.add(new coinz(800, coinzzY));
-       
+       }
           buildingList.add(new Buildings(randomBuildingWidth, randomBuildingHeight, totalLocationX)); 
           
           lokationX = lokationX + randomBuildingWidth- 10;
           positionX = positionX + randomBuildingWidth;
-         
-
+         frameThing = frameThing + 1;
+          if (frameThing == 30){
+            frameThing = 0;
+          }
 
      //    }
      //extraBuilding = extraBuilding + randomBuildingWidth;
