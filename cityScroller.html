@@ -123,7 +123,7 @@
           //coin.updateCoins();
         Naruto.update();
        Naruto.drawNaruto();
-       
+     
 
 
        
@@ -294,7 +294,7 @@
          coinzzX = coinzzX + lokationX
          lokationX = 0;
          if (frameThing == 29){
-         coinList.add(new coinz(800, coinzzY));
+         coinList.add(new coinz(1000, coinzzY));
        }
           buildingList.add(new Buildings(randomBuildingWidth, randomBuildingHeight, totalLocationX)); 
           
@@ -417,6 +417,8 @@ class Skyline3{
      //extraBuilding = extraBuilding + randomBuildingWidth;
 }
 }
+var NarutoLocationY;
+NarutoLocationY = NarutoY;
 /* @pjs preload="NarutoRun1.png","NarutoRun2.png","NarutoRun3.png","NarutoRun4.png","NarutoRun5.png","NarutoRun6.png", "NarutoSmoke.png", "scroll.png"; */
  class Naruto
         {
@@ -424,9 +426,12 @@ class Skyline3{
           var NarutoX;
        //   var NarutoY;
           PImage img;
+
           var running = true;
           var narutoExistence = false;
           var imege = -1;
+          var kek = true;
+          var NarutoJumpY = NarutoLocationY;
   //        var moreCoins = true;
 //          var coinNumber = 0;
 
@@ -434,6 +439,7 @@ class Skyline3{
           //constructor
           Naruto(){
             NarutoX = 100;
+            
           //  NarutoY = 400;
            //  img = loadImage("NarutoRun1.png");
          // img = loadImage("NarutoRun1.png", "NarutoRun2.png","NarutoRun3.png","NarutoRun4.png","NarutoRun5.png","NarutoRun6.png");
@@ -449,13 +455,13 @@ class Skyline3{
           }
 
           void update(){
-            if (keyPressed && keyCode == 32) {
+            if (keyPressed && keyCode == UP ) {
               jump();
               println("same");
-
+              
             }
             else {
-              fall();
+             fall();
             }
             
           }
@@ -518,16 +524,22 @@ class Skyline3{
    //   }
     }
               void jump(){
+                NarutoJumpY -= 50;
             img = loadImage("NarutoJump.png");
-            NarutoY -= 5;
+            image(img, NarutoX, NarutoJumpY, 64, 64);
+            
+          
            }
 
           void fall(){
-           if(NarutoY < height - 75){
-              NarutoY += 5;
+           if(NarutoY < height - 50){
+              NarutoY += 10;
+              
             }
            else { //at bottom of screen 
               //img = loadImage("Naruto.png");
+
+             
             }
           }
 }
