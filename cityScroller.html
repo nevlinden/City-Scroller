@@ -34,7 +34,7 @@
       //  ArrayList<coinz> coinList;
         //This function only runs once at the start of the program
         void setup() {
-         
+         var isRunning = true;
           size(WINDOW_WIDTH, WINDOW_HEIGHT); //sets the size of the window
       //document.getElementById("NarutoOpening.mp3").play();
       var song = new Audio('NarutoOpening.mp3');
@@ -121,9 +121,11 @@
           
         //  coin.drawCoins();
           //coin.updateCoins();
+
         Naruto.update();
+  
        Naruto.drawNaruto();
-     
+    
 
 
        
@@ -419,7 +421,7 @@ class Skyline3{
 }
 var NarutoLocationY;
 NarutoLocationY = NarutoY;
-/* @pjs preload="NarutoRun1.png","NarutoRun2.png","NarutoRun3.png","NarutoRun4.png","NarutoRun5.png","NarutoRun6.png", "NarutoSmoke.png", "scroll.png"; */
+/* @pjs preload="NarutoRun1.png","NarutoRun2.png","NarutoRun3.png","NarutoRun4.png","NarutoRun5.png","NarutoRun6.png", "NarutoSmoke.png", "scroll.png", "NarutoJump.png", "NarutoDash.png"; */
  class Naruto
         {
           //attributes
@@ -431,7 +433,9 @@ NarutoLocationY = NarutoY;
           var narutoExistence = false;
           var imege = -1;
           var kek = true;
-          var NarutoJumpY = NarutoLocationY;
+         // var NarutoJumpY;
+          var runOnce = true;
+          var finished = false;
   //        var moreCoins = true;
 //          var coinNumber = 0;
 
@@ -439,7 +443,7 @@ NarutoLocationY = NarutoY;
           //constructor
           Naruto(){
             NarutoX = 100;
-            
+      //      NarutoJumpY = NarutoY;
           //  NarutoY = 400;
            //  img = loadImage("NarutoRun1.png");
          // img = loadImage("NarutoRun1.png", "NarutoRun2.png","NarutoRun3.png","NarutoRun4.png","NarutoRun5.png","NarutoRun6.png");
@@ -455,9 +459,10 @@ NarutoLocationY = NarutoY;
           }
 
           void update(){
-            if (keyPressed && keyCode == UP ) {
-              jump();
-              println("same");
+            if (keyPressed && keyCode == UP) {
+            //  isRunning =false; 
+             imege = -3;
+             // println("same");
               
             }
             else {
@@ -468,35 +473,55 @@ NarutoLocationY = NarutoY;
 
  void drawNaruto(){ //normal running form
            // image(img, NarutoX, NarutoY,64,64);
-        //   var runImageArray["NarutoRun1.png", "NarutoRun2.png","NarutoRun3.png","NarutoRun4.png","NarutoRun5.png","NarutoRun6.png"];
+        //   var runImageArray["NarutoRun1.png", "NarutoRun2.png","NarutoRun3.png","NarutoRun4.png","NarutoRun5.png","NarutoRun6.png", "NarutoJump.png"];
        //    while(running == true){
        //  for (var i = 0; i < 5; i++) {
-          
+       //    NarutoJumpY = NarutoY - 5;
                   //img = loadImage(runImageArray[i];
                 //  img = loadImage("NarutoRun1.png");
                if(imege == 0){
                   img = loadImage("NarutoRun1.png");
                   image(img, NarutoX, NarutoY, 64, 64);
+                  NarutoJumpY = NarutoY;
                 }
                 else if(imege == 1){
                   img = loadImage("NarutoRun2.png");
                   image(img, NarutoX, NarutoY, 64, 64);
+                  NarutoJumpY = NarutoY;
                 }
                 else if(imege == 2){
                   img = loadImage("NarutoRun3.png");
                   image(img, NarutoX, NarutoY, 64, 64);
+                  NarutoJumpY = NarutoY;
                 }
                 else if(imege == 3){
                   img = loadImage("NarutoRun4.png");
                   image(img, NarutoX, NarutoY, 64, 64);
+                  NarutoJumpY = NarutoY;
                 }
                 else if(imege == 4){
                   img = loadImage("NarutoRun5.png");
                   image(img, NarutoX, NarutoY, 64, 64);
+                  NarutoJumpY = NarutoY;
                 }
                 else if(imege == 5){
                   img = loadImage("NarutoRun6.png");
                   image(img, NarutoX, NarutoY, 64, 64);
+                  NarutoJumpY = NarutoY;
+                }
+                 else if(imege == -2){
+                  println("KEKEKEKE");
+                  img = loadImage("NarutoDash.png");
+                  image(img, NarutoX, NarutoY, 64, 64);
+                  NarutoJumpY = NarutoY;
+                }
+                 else if(imege == -3){
+                  println("WORKS");
+                  img = loadImage("NarutoJump.png");
+                  NarutoJumpY -= 10;
+                  image(img, NarutoX, NarutoJumpY, 64, 64);
+                 
+                
                 }
                  if(narutoExistence == false && imege == -1){
                   if(frameCount > 0 ){
@@ -524,17 +549,19 @@ NarutoLocationY = NarutoY;
    //   }
     }
               void jump(){
-                NarutoJumpY -= 50;
-            img = loadImage("NarutoJump.png");
-            image(img, NarutoX, NarutoJumpY, 64, 64);
+               
+                 println("same");
+               NarutoY -= 25;
+            img = loadImage("NarutoSmoke.png");
+           image(img, NarutoX, NarutoY, 64, 64);
             
-          
-           }
-
+}
           void fall(){
-           if(NarutoY < height - 50){
-              NarutoY += 10;
-              
+           if(NarutoY <  50){
+              NarutoY += 25;
+              img = loadImage("NarutoJump.png");
+            image(img, NarutoX, NarutoY, 64, 64);
+             
             }
            else { //at bottom of screen 
               //img = loadImage("Naruto.png");
