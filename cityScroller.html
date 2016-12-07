@@ -300,7 +300,7 @@
        }
           buildingList.add(new Buildings(randomBuildingWidth, randomBuildingHeight, totalLocationX)); 
           
-          lokationX = lokationX + randomBuildingWidth- 10;
+          lokationX = lokationX + randomBuildingWidth - 10;
           positionX = positionX + randomBuildingWidth;
          frameThing = frameThing + 1;
           if (frameThing == 30){
@@ -310,7 +310,28 @@
      //    }
      //extraBuilding = extraBuilding + randomBuildingWidth;
 }
-
+void fillBuildings(){
+        //  var randomBuildingWidth = random(100,170);
+       //  var randomBuildingHeight = random(70, 200);
+       //totalBuildingWidth = globalMeme;
+//if(needMoreBuildings == true){
+         while(totalBuildingWidth < 1000){
+          var randomBuildingWidth = random(100,170);
+         var randomBuildingHeight = random(70, 200);
+         totalBuildingWidth += randomBuildingWidth;
+      //   loqationX = loqationX + randomBuildingWidth;
+          totalLoqationX = totalLoqationX + loqationX;
+          buildingList.add(new Buildings(randomBuildingWidth, randomBuildingHeight, totalLoqationX));
+          loqationX = 0;
+          loqationX = loqationX + randomBuildingWidth;
+          
+         }
+         totalBuildingWidth = 0;
+        
+      //   needMoreBuildings = false;
+     // totalBuildingWidth = 0;
+//}
+         }
 
 
 
@@ -520,6 +541,7 @@ NarutoLocationY = NarutoY;
                   img = loadImage("NarutoJump.png");
                   NarutoJumpY -= 10;
                   image(img, NarutoX, NarutoJumpY, 64, 64);
+
                  
                 
                 }
