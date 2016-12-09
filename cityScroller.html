@@ -14,8 +14,12 @@
    //  coinz coin = new coinz();
    sunAndMoon sunAndMoon = new sunAndMoon(0,100);
    var NarutoY = 400;
-  
-     
+  var syncedX = 750;
+  var syncedY = 0;
+     var syncedX1 = 0;
+     var syncedX2 = 0;
+     var deleteCoin = true;
+     var startSync = false;
        // Skyline skylinetest = new Skyline();
        // Buildings building = new Buildings();
         HorizontalLine fastLine = new HorizontalLine(50, 2.5); 
@@ -59,7 +63,11 @@
         var isNight = false;
         //called repeatedly
         void draw() { 
-        println(frameCount);
+if(frameCount > 60){
+  startSync = true;
+}
+          //deleteCoin = true;
+      //  println(frameCount);
          background(colorChange,4,69); //needed in the draw function to "clear" the screen between updates
          if(isNight == false){
          if(colorChange > -1){
@@ -125,9 +133,20 @@
         Naruto.update();
   
        Naruto.drawNaruto();
-    
+       println(syncedX1);
+//println(frameCount);
+     if(syncedX >  syncedX1 && startSync == true){
+           //coinList.remove(1);
+          // println(syncedX);
+      //     println(syncedX1);
+           println("HEBEJEBEJBEBJE");
+          deleteCoin = false;
+          }
 
-
+// if(syncedX1 == syncedX && syncedY1 == syncedY && deleteCoin == true){
+           //coinList.remove(1);
+          //deleteCoin = false;
+         // }
        
         } 
         
@@ -284,6 +303,7 @@
             currentCoin.drawCoins();
             currentCoin.updateCoins();
           }
+
          }
         void createBuildings(){
 
@@ -480,16 +500,23 @@ NarutoLocationY = NarutoY;
           }
 
           void update(){
+
             if (keyPressed && keyCode == UP) {
             //  isRunning =false; 
              imege = -3;
              // println("same");
-              
+              if(NarutoJumpY < 200){
+                    imege = -2;
+
+                  }
             }
             else {
              fall();
             }
-            
+       //     syncedX = NarutoX;
+            syncedY = NarutoY;
+           
+
           }
 
  void drawNaruto(){ //normal running form
@@ -504,43 +531,57 @@ NarutoLocationY = NarutoY;
                   img = loadImage("NarutoRun1.png");
                   image(img, NarutoX, NarutoY, 64, 64);
                   NarutoJumpY = NarutoY;
+           //       syncedX = NarutoX;
+         //  syncedY = NarutoY;
                 }
                 else if(imege == 1){
                   img = loadImage("NarutoRun2.png");
                   image(img, NarutoX, NarutoY, 64, 64);
                   NarutoJumpY = NarutoY;
+              //    syncedX = NarutoX;
+           //syncedY = NarutoY;
                 }
                 else if(imege == 2){
                   img = loadImage("NarutoRun3.png");
                   image(img, NarutoX, NarutoY, 64, 64);
                   NarutoJumpY = NarutoY;
+              //    syncedX = NarutoX;
+         //  syncedY = NarutoY;
                 }
                 else if(imege == 3){
                   img = loadImage("NarutoRun4.png");
                   image(img, NarutoX, NarutoY, 64, 64);
                   NarutoJumpY = NarutoY;
+             //     syncedX = NarutoX;
+          // syncedY = NarutoY;
                 }
                 else if(imege == 4){
                   img = loadImage("NarutoRun5.png");
                   image(img, NarutoX, NarutoY, 64, 64);
                   NarutoJumpY = NarutoY;
+               //   syncedX = NarutoX;
+          // syncedY = NarutoY;
                 }
                 else if(imege == 5){
                   img = loadImage("NarutoRun6.png");
                   image(img, NarutoX, NarutoY, 64, 64);
                   NarutoJumpY = NarutoY;
+           //       syncedX = NarutoX;
+         //  syncedY = NarutoY;
                 }
                  else if(imege == -2){
-                  println("KEKEKEKE");
+                 // println("KEKEKEKE");
                   img = loadImage("NarutoDash.png");
                   image(img, NarutoX, NarutoY, 64, 64);
                   NarutoJumpY = NarutoY;
                 }
                  else if(imege == -3){
-                  println("WORKS");
+              //    println("WORKS");
                   img = loadImage("NarutoJump.png");
                   NarutoJumpY -= 10;
+                   
                   image(img, NarutoX, NarutoJumpY, 64, 64);
+                 
 
                  
                 
@@ -572,7 +613,7 @@ NarutoLocationY = NarutoY;
     }
               void jump(){
                
-                 println("same");
+               //  println("same");
                NarutoY -= 25;
             img = loadImage("NarutoSmoke.png");
            image(img, NarutoX, NarutoY, 64, 64);
@@ -604,12 +645,19 @@ NarutoLocationY = NarutoY;
             img = loadImage("scroll.png");
             image(img, coinsX, coinsY, 30,30);
             //coinNumber += 1;
-            
+             
+            syncedX2 = coinsY;
           
           }
           void updateCoins(){
-            coinsX -= 10;
 
+            coinsX -= 10;
+           syncedX1 = coinsX;
+        //   println(syncedX1);
+           // println(coinsX);
+        //   if(syncedX1 == syncedX && syncedY1 = syncedY){
+
+          // }
           }
          }
 
