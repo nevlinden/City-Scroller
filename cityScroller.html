@@ -15,9 +15,10 @@
    sunAndMoon sunAndMoon = new sunAndMoon(0,100);
    var NarutoY = 400;
   var syncedX = 750;
+  //var syncedX = 100;
   var syncedY = 0;
      var syncedX1 = 0;
-     var syncedX2 = 0;
+     var syncedY1 = 0;
      var deleteCoin = true;
      var startSync = false;
        // Skyline skylinetest = new Skyline();
@@ -42,7 +43,7 @@
           size(WINDOW_WIDTH, WINDOW_HEIGHT); //sets the size of the window
       //document.getElementById("NarutoOpening.mp3").play();
       var song = new Audio('NarutoOpening.mp3');
-          song.play();
+         song.play();
           frameRate(30); //how many times the draw function is called per second
 
 //while (totalWidth < 1000){
@@ -63,7 +64,7 @@
         var isNight = false;
         //called repeatedly
         void draw() { 
-if(frameCount > 60){
+if(frameCount > 100){
   startSync = true;
 }
           //deleteCoin = true;
@@ -133,14 +134,15 @@ if(frameCount > 60){
         Naruto.update();
   
        Naruto.drawNaruto();
-       println(syncedX1);
+      // if(startSync == true){
+      // println(syncedX1)}
 //println(frameCount);
      if(syncedX >  syncedX1 && startSync == true){
-           //coinList.remove(1);
+           skyline.killCoin();
           // println(syncedX);
       //     println(syncedX1);
-           println("HEBEJEBEJBEBJE");
-          deleteCoin = false;
+       //   println("HEBEJEBEJBEBJE");
+      //    deleteCoin = false;
           }
 
 // if(syncedX1 == syncedX && syncedY1 == syncedY && deleteCoin == true){
@@ -283,7 +285,9 @@ if(frameCount > 60){
         //}
 
           }
-
+          void killCoin(){
+            coinList.remove(0);
+          }
              
          void drawSkyline(){
           //HERE
@@ -646,13 +650,16 @@ NarutoLocationY = NarutoY;
             image(img, coinsX, coinsY, 30,30);
             //coinNumber += 1;
              
-            syncedX2 = coinsY;
+         //   syncedY1 = coinsY;
           
           }
           void updateCoins(){
 
             coinsX -= 10;
+            
            syncedX1 = coinsX;
+         
+           syncedY1 = coinsY;
         //   println(syncedX1);
            // println(coinsX);
         //   if(syncedX1 == syncedX && syncedY1 = syncedY){
