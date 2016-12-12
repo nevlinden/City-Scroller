@@ -21,6 +21,7 @@
      var syncedY1 = 0;
      var deleteCoin = true;
      var startSync = false;
+     var lul = 0;
        // Skyline skylinetest = new Skyline();
        // Buildings building = new Buildings();
         HorizontalLine fastLine = new HorizontalLine(50, 2.5); 
@@ -293,12 +294,19 @@ if(frameCount > 100){
           //HERE
        for(var i = 0; i < buildingList.size(); i++) {
            Buildings currentBuilding = buildingList.get(i); 
-      //     fill(255,0,0);
+      //     fill(255,0,0)
             currentBuilding.drawBuilding();
             currentBuilding.updateBuilding();
          // println(currentBuilding.getHeight());
           //  currentBuilding.getBuildingHeight();
-            
+          Buildings firstBuilding = buildingList.get(lul);
+            if(firstBuilding.buildingLocationX < 0){
+              buildingList.remove(-1);
+              
+              lul = lul + 1;
+             
+              //ADD STUFF HERE TO MAKE IT SO THAT EVERY TIME IT CROSSES 0, IT ADDS A BUILDING AND 1 TO THE GET THINGY
+            }
           }             
          }  
          void drawCoinz(){
